@@ -733,7 +733,7 @@ document.addEventListener("DOMContentLoaded", () => {
                                                     <div class="ornaments-wrapper">
                                                         <div class="bg-1">
                                                             <div class="image-element">
-                                                                <img src="./assets/images/Afterparty1.png" alt="Afterparty">
+                                                                <img src="./assets/images/Afterparty2.png" alt="Afterparty">
                                                             </div>
                                                             <div class="overlay-elements-gradient overlay-top"></div>
                                                         </div>
@@ -825,130 +825,131 @@ document.addEventListener("DOMContentLoaded", () => {
                                         <div class="image-element">
                                             <img src="./assets/images/RSVP.png" alt="RSVP" class="img-fluid">
                                         </div>
-                                        <div class="title-section" data-anim="fade-down">
-                                            <h2> </h2>
                                         </div>
-                                        <form action="#" data-anim="fade">
-                                            <div class="input-group mb-3">
-                                                <span class="input-group-text"><i class="fas fa-user"></i></span>
-                                                <input type="text" class="form-control" placeholder="Name">
-                                            </div>
-                                            <div class="input-group mb-3">
-                                             <span class="input-group-text"><i class="fas fa-phone"></i></span>
-                                             <input 
-                                               type="tel" 
-                                               class="form-control" 
-                                               placeholder="Phone Number" 
-                                               inputmode="numeric" 
-                                               pattern="[0-9]*" 
-                                               oninput="this.value = this.value.replace(/[^0-9]/g, '');" >
-                                           </div>
+                                        <div class="rsvp-overlay-box">
+                                            <form action="#" data-anim="fade">
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
+                                                    <input type="text" class="form-control" placeholder="Name">
+                                                </div>
+                                                <div class="input-group mb-3">
+                                                    <span class="input-group-text"><i class="fas fa-phone"></i></span>
+                                                    <input 
+                                                        type="tel" 
+                                                        class="form-control" 
+                                                        placeholder="Phone Number" 
+                                                        inputmode="numeric" 
+                                                        pattern="[0-9]*" 
+                                                        oninput="this.value = this.value.replace(/[^0-9]/g, '');" >
+                                                </div>
 
-                                            <div class="mb-3">
-                                                <label for="confirmation" class="form-label">Confirmation of Attendance</label>
-                                            <select id="confirmation" name="confirmation" class="form-select" required>
-                                              <option disabled selected value="">Select event to attend</option>
-                                              <option value="Holy Matrimony">Attend all</option>
-                                              <option value="Holy Matrimony">Attend Holy Matrimony only</option>
-                                              <option value="Wedding Reception">Attend Wedding Reception only</option>
-                                              <option value="Wedding Reception">Attend Afterparty only</option>
-                                              <option value="Unable All">Unable to attend</option>
-                                            </select>
+                                                <div class="mb-3">
+                                                    <label for="confirmation" class="form-label"style="color: black">Confirmation of Attendance</label>
+                                                        <select id="confirmation" name="confirmation" class="form-select" required>
+                                                        <option disabled selected value="">Select event to attend</option>
+                                                        <option value="Holy Matrimony">Attend all</option>
+                                                        <option value="Holy Matrimony">Attend Holy Matrimony only</option>
+                                                        <option value="Wedding Reception">Attend Wedding Reception only</option>
+                                                        <option value="Wedding Reception">Attend Afterparty only</option>
+                                                        <option value="Unable All">Unable to attend</option>
+                                                        </select>
 
-                                            <div id="guestsMatrimonyWrapper" class="mb-3" style="display: none;">
-                                                <label for="guestsM" class="form-label">The number of guests</label>
-                                                <select id="guestsM" name="guestsM" class="form-select">
-                                                    <option disabled selected value="">Select guests</option>
-                                                </select>
-                                            </div>
+                                                <div id="guestsMatrimonyWrapper" class="mb-3" style="display: none;">
+                                                    <label for="guestsM" class="form-label">The number of guests</label>
+                                                    <select id="guestsM" name="guestsM" class="form-select">
+                                                        <option disabled selected value="">Select guests</option>
+                                                    </select>
+                                                </div>
 
-                                            <div id="guestsReceptionWrapper" class="mb-3" style="display: none;">
-                                                <label for="guests" class="form-label">The number of guests</label>
-                                                <select id="guests" name="guests" class="form-select">
-                                                    <option disabled selected value="">Select guests</option>
-                                                </select>
-                                            </div>
+                                                <div id="guestsReceptionWrapper" class="mb-3" style="display: none;">
+                                                    <label for="guests" class="form-label">The number of guests</label>
+                                                    <select id="guests" name="guests" class="form-select">
+                                                        <option disabled selected value="">Select guests</option>
+                                                    </select>
+                                                </div>
 
-                                            <div id="guestsAfterpartyWrapper" class="mb-3" style="display: none;">
-                                                <label for="guests" class="form-label">The number of guests</label>
-                                                <select id="guests" name="guests" class="form-select">
-                                                    <option disabled selected value="">Select guests</option>
-                                                </select>
-                                            </div>
+                                                <div id="guestsAfterpartyWrapper" class="mb-3" style="display: none;">
+                                                    <label for="guests" class="form-label">The number of guests</label>
+                                                    <select id="guests" name="guests" class="form-select">
+                                                        <option disabled selected value="">Select guests</option>
+                                                    </select>
+                                                </div>
 
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const confirmationSelect = document.getElementById("confirmation");
-    const guestsMatrimonyWrapper = document.getElementById("guestsMatrimonyWrapper");
-    const guestsReceptionWrapper = document.getElementById("guestsReceptionWrapper");
-    const guestsAfterpartyWrapper = document.getElementById("guestsAfterpartyWrapper");
-    const guestsM = document.getElementById("guestsM");
-    const guests = document.getElementById("guests");
+                                                <script>
+                                                    document.addEventListener("DOMContentLoaded", function () {
+                                                    const confirmationSelect = document.getElementById("confirmation");
+                                                    const guestsMatrimonyWrapper = document.getElementById("guestsMatrimonyWrapper");
+                                                    const guestsReceptionWrapper = document.getElementById("guestsReceptionWrapper");
+                                                    const guestsAfterpartyWrapper = document.getElementById("guestsAfterpartyWrapper");
+                                                    const guestsM = document.getElementById("guestsM");
+                                                    const guests = document.getElementById("guests");
 
-    // Detect type from URL
-    let path = window.location.pathname.replace(/^\/+/, "");
-    let guestName = path.replace(/-/g, " ").toLowerCase();
+                                                    // Detect type from URL
+                                                    let path = window.location.pathname.replace(/^\/+/, "");
+                                                    let guestName = path.replace(/-/g, " ").toLowerCase();
 
-    let maxGuests = 2; // default
+                                                    let maxGuests = 2; // default
 
-    if (guestName.includes("and family")) {
-     maxGuests = 2;
-    } else if (guestName.includes("and partner")) {
-      maxGuests = 2;
-    }
+                                                    if (guestName.includes("and family")) {
+                                                    maxGuests = 2;
+                                                    } else if (guestName.includes("and partner")) {
+                                                    maxGuests = 2;
+                                                    }
 
 
-    // Helper to build dropdown options dynamically
-    function populateOptions(select, max) {
-      select.innerHTML = '<option disabled selected value="">Select guests</option>';
-      for (let i = 1; i <= max; i++) {
-        const opt = document.createElement("option");
-        opt.value = i;
-        opt.textContent = i;
-        select.appendChild(opt);
-      }
-    }
+                                                    // Helper to build dropdown options dynamically
+                                                    function populateOptions(select, max) {
+                                                    select.innerHTML = '<option disabled selected value="">Select guests</option>';
+                                                    for (let i = 1; i <= max; i++) {
+                                                        const opt = document.createElement("option");
+                                                        opt.value = i;
+                                                        opt.textContent = i;
+                                                        select.appendChild(opt);
+                                                    }
+                                                    }
 
-    // Initially populate both selects
-    populateOptions(guestsM, maxGuests);
-    populateOptions(guests, maxGuests);
-    
+                                                    // Initially populate both selects
+                                                    populateOptions(guestsM, maxGuests);
+                                                    populateOptions(guests, maxGuests);
+                                                    
 
-    // Toggle logic based on confirmation
-    confirmationSelect.addEventListener("change", function () {
-      const value = this.value;
+                                                    // Toggle logic based on confirmation
+                                                    confirmationSelect.addEventListener("change", function () {
+                                                    const value = this.value;
 
-      // Reset everything
-      guestsMatrimonyWrapper.style.display = "none";
-      guestsReceptionWrapper.style.display = "none";
-      guestsAfterpartyWrapper.style.display = "none";
-      guestsM.required = false;
-      guests.required = false;
+                                                    // Reset everything
+                                                    guestsMatrimonyWrapper.style.display = "none";
+                                                    guestsReceptionWrapper.style.display = "none";
+                                                    guestsAfterpartyWrapper.style.display = "none";
+                                                    guestsM.required = false;
+                                                    guests.required = false;
 
-      if (value === "Both") {
-        guestsMatrimonyWrapper.style.display = "block";
-        guestsM.required = true;
-      } else if (value === "Holy Matrimony") {
-        guestsMatrimonyWrapper.style.display = "block";
-        guestsM.required = true;
-      } else if (value === "Wedding Reception") {
-        guestsReceptionWrapper.style.display = "block";
-        guests.required = true;
-      } else if (value === "Afterparty") {
-        guestsAfterpartyWrapper.style.display = "block";
-        guests.required = true;
-      }
-      // If "Unable Both" → everything stays hidden
-    });
-  });
-</script>
-                                            <br>
-                                            <p style="color: black;">With Respect …</p>
-                                            <p style="color: black; margin-top: 1rem; style="text-align: justify;">In order for all guests to relax and  enjoy the evening, we respectfully request an <em>adults only</em> celebration.</p>
-                                            <p style="color: black; margin-bottom: 0rem; margin-top: 1rem; style="text-align: justify;">And as this will be a seated dinner,</p>
-                                            <p style="color: black;style="text-align: justify;">please RSVP <em>according to the number of guests</em> indicated in your invitation.</p>
-                                            <button class="btn btn-custom w-100" data-anim="zoom-in-up">Send</button>
-                                        </form>
+                                                    if (value === "Both") {
+                                                        guestsMatrimonyWrapper.style.display = "block";
+                                                        guestsM.required = true;
+                                                    } else if (value === "Holy Matrimony") {
+                                                        guestsMatrimonyWrapper.style.display = "block";
+                                                        guestsM.required = true;
+                                                    } else if (value === "Wedding Reception") {
+                                                        guestsReceptionWrapper.style.display = "block";
+                                                        guests.required = true;
+                                                    } else if (value === "Afterparty") {
+                                                        guestsAfterpartyWrapper.style.display = "block";
+                                                        guests.required = true;
+                                                    }
+                                                    // If "Unable Both" → everything stays hidden
+                                                    });
+                                                    });
+                                                </script>
+                                                <br>
+                                                <p style="color: rgba(255, 255, 255, 0.693); text-align: center">--------------------🤍--------------------</p>
+                                                <h4 style="color: black; text-align: center"><em>With respect …</em></h4>
+                                                <p style="color: black; margin-top: 1rem; text-align: justify">In order for all guests to relax and  enjoy the evening, we respectfully request an <em>adults only</em> celebration.</p>
+                                                <p style="color: black; margin-bottom: 0rem; margin-top: 1rem; style=text-align: justify;">And as this will be a seated dinner,</p>
+                                                <p style="color: black;style=text-align: justify;">please RSVP <em>according to the number of guests</em> indicated in your invitation.</p>
+                                                <button class="btn btn-custom w-100" data-anim="zoom-in-up">Send</button>
+                                            </form>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -1217,6 +1218,9 @@ document.addEventListener("DOMContentLoaded", () => {
                                             </li>
                                             <li class="splide__slide position-relative">
                                                     <img src="./assets/images/photo22.jfif" alt="img-gallery" class="img-gallery" />
+                                            </li>
+                                            <li class="splide__slide position-relative">
+                                                    <img src="./assets/images/photo23.jfif" alt="img-gallery" class="img-gallery" />
                                             </li>
                                         </ul>
                                     </div>

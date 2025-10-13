@@ -2723,6 +2723,21 @@ img[alt=tree] {
   position: relative;
 }
 
+.rsvp-overlay-box {
+  background-color: rgba(255, 255, 255, 0.373);
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
+  padding: 1rem;
+  box-shadow: 0 4px 4px rgba(0, 0, 0, 0.15);
+
+  /* 🔧 Tambahan untuk ukuran */
+  width: 100%;         /* atau bisa pakai px misal 500px */
+  max-width: 500px;   /* batas maksimal */
+  height: auto;       /* tinggi menyesuaikan isi */
+  min-height: 300px;  /* tinggi minimum */
+  margin: 0 auto;     /* biar center di tengah */
+}
+
 .wishes-section {
   position: relative;
 }
