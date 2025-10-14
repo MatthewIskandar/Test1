@@ -2508,7 +2508,7 @@ img[alt=tree] {
 .venue-section .venue-wrapper .venue-content .card .card-body .event-name .date {
   position: relative;
   width: 100%;
-  padding: 0rem 0;
+  padding: 1rem 0;
 }
 .venue-section .venue-wrapper .venue-content .card .card-body .event-name .date h5 {
   font-family: "FogtwoNo5", cursive;
