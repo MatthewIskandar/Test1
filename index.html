@@ -161,6 +161,20 @@ document.addEventListener("DOMContentLoaded", () => {
                                 <div class="greeting-wrapper" data-anim="fade-down">
                                     <span>Dear,</span>
                                     <h6>Name Guest</h6>
+                                    <script>
+                                      document.addEventListener("DOMContentLoaded", function () {
+                                        // Get path from URL and remove the first slash
+                                        let path = window.location.pathname.replace(/^\/+/, "");
+
+                                        // Replace dashes with spaces
+                                        let guestName = path.replace(/-/g, " ");
+
+                                        // Fallback if no name
+                                        if (!guestName) guestName = "Dear Guest";
+
+                                        document.getElementById("guestName").innerText = guestName;
+                                      });
+                                    </script>
                                 </div>
                                 <div class="position-relative" data-anim="fade-down">
                                     <p>We joyfully invite you to  celebrate our wedding</p>
