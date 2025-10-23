@@ -850,53 +850,54 @@ document.addEventListener("DOMContentLoaded", () => {
                                         </div>
                                         </div>
                                         <div class="rsvp-overlay-box">
-                                            <form action="#" data-anim="fade">
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text"><i class="fas fa-user"></i></span>
-                                                    <input type="text" class="form-control" placeholder="Name">
-                                                </div>
-                                                <div class="input-group mb-3">
-                                                    <span class="input-group-text"><i class="fas fa-phone"></i></span>
-                                                    <input 
-                                                        type="tel" 
-                                                        class="form-control" 
-                                                        placeholder="Phone Number" 
-                                                        inputmode="numeric" 
-                                                        pattern="[0-9]*" 
-                                                        oninput="this.value = this.value.replace(/[^0-9]/g, '');" >
-                                                </div>
+                                            <form id="rsvpForm" data-anim="fade">
+  <div class="input-group mb-3">
+    <span class="input-group-text"><i class="fas fa-user"></i></span>
+    <input type="text" name="name" class="form-control" placeholder="Name" required>
+  </div>
 
-                                                <div class="mb-3">
-                                                    <label for="confirmation" class="form-label"style="color: black">Confirmation of Attendance</label>
-                                                        <select id="confirmation" name="confirmation" class="form-select" required>
-                                                        <option disabled selected value="">Select event to attend</option>
-                                                        <option value="Holy Matrimony">Attend all</option>
-                                                        <option value="Holy Matrimony">Attend Holy Matrimony only</option>
-                                                        <option value="Wedding Reception">Attend Wedding Reception only</option>
-                                                        <option value="Wedding Reception">Attend Afterparty only</option>
-                                                        <option value="Unable All">Unable to attend</option>
-                                                        </select>
+  <div class="input-group mb-3">
+    <span class="input-group-text"><i class="fas fa-phone"></i></span>
+    <input type="tel" name="phone" class="form-control" placeholder="Phone Number" inputmode="numeric" pattern="[0-9]*"
+      oninput="this.value = this.value.replace(/[^0-9]/g, '');" required>
+  </div>
 
-                                                <div id="guestsMatrimonyWrapper" class="mb-3" style="display: none;">
-                                                    <label for="guestsM" class="form-label">The number of guests</label>
-                                                    <select id="guestsM" name="guestsM" class="form-select">
-                                                        <option disabled selected value="">Select guests</option>
-                                                    </select>
-                                                </div>
+  <label for="confirmation" class="form-label" style="color: black">Confirmation of Attendance</label>
+  <select id="confirmation" name="confirmation" class="form-select" required>
+    <option disabled selected value="">Select event to attend</option>
+    <option value="Attend all">Attend all</option>
+    <option value="Holy Matrimony only">Attend Holy Matrimony only</option>
+    <option value="Wedding Reception only">Attend Wedding Reception only</option>
+    <option value="Afterparty only">Attend Afterparty only</option>
+    <option value="Unable to attend">Unable to attend</option>
+  </select>
 
-                                                <div id="guestsReceptionWrapper" class="mb-3" style="display: none;">
-                                                    <label for="guests" class="form-label">The number of guests</label>
-                                                    <select id="guests" name="guests" class="form-select">
-                                                        <option disabled selected value="">Select guests</option>
-                                                    </select>
-                                                </div>
+  <div id="guestsMatrimonyWrapper" class="mb-3" style="display:none;">
+    <label for="guestsM" class="form-label">Guests (Holy Matrimony)</label>
+    <select id="guestsM" name="guestsM" class="form-select">
+      <option disabled selected value="">Select guests</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+    </select>
+  </div>
 
-                                                <div id="guestsAfterpartyWrapper" class="mb-3" style="display: none;">
-                                                    <label for="guests" class="form-label">The number of guests</label>
-                                                    <select id="guests" name="guests" class="form-select">
-                                                        <option disabled selected value="">Select guests</option>
-                                                    </select>
-                                                </div>
+  <div id="guestsReceptionWrapper" class="mb-3" style="display:none;">
+    <label for="guests" class="form-label">Guests (Reception)</label>
+    <select id="guests" name="guests" class="form-select">
+      <option disabled selected value="">Select guests</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+    </select>
+  </div>
+
+  <div id="guestsAfterpartyWrapper" class="mb-3" style="display:none;">
+    <label for="guestsA" class="form-label">Guests (Afterparty)</label>
+    <select id="guestsA" name="guestsA" class="form-select">
+      <option disabled selected value="">Select guests</option>
+      <option value="1">1</option>
+      <option value="2">2</option>
+    </select>
+  </div>
 
                                                 <script>
                                                     document.addEventListener("DOMContentLoaded", function () {
@@ -970,8 +971,32 @@ document.addEventListener("DOMContentLoaded", () => {
                                                 <p style="color: black; margin-top: 1rem; text-align: justify">In order for all guests to relax and  enjoy the evening, we respectfully request an <strong><em>adults only</em></strong> celebration.</p>
                                                 <p style="color: black; margin-bottom: 0rem; margin-top: 1rem; style=text-align: justify;">And as this will be a seated dinner,</p>
                                                 <p style="color: black;style=text-align: justify;">please RSVP <strong><em>according to the number of guests</em></strong> indicated in your invitation.</p>
-                                                <button class="btn btn-custom w-100" data-anim="zoom-in-up">Send</button>
+                                                <button class="btn btn-custom w-100" data-anim="zoom-in-up" type="submit">Send</button>
                                             </form>
+                                            <script>
+                                            document.addEventListener("DOMContentLoaded", function () {
+                                              const scriptURL = "https://script.google.com/macros/s/AKfycbxcBNPl3gou6s-PRRxi1bFZ8qeZvKm3SclXOyQnQ4pFbwfyKKHNq0AL-v1lp09DHA22/exec";
+                                              const form = document.getElementById("rsvpForm");
+                                            
+                                              form.addEventListener("submit", async (e) => {
+                                                e.preventDefault();
+
+                                                const formData = new FormData(form);
+                                                formData.append("time", new Date().toLocaleString("en-US", { timeZone: "Asia/Jakarta" }));
+                                            
+                                                try {
+                                                  const res = await fetch(scriptURL, { method: "POST", body: formData });
+                                                  if (!res.ok) throw new Error("Network response was not ok");
+                                                  alert("✅ Thank you! Your RSVP has been submitted.");
+                                                  form.reset();
+                                                } catch (err) {
+                                                  console.error("❌ Error!", err);
+                                                  alert("Failed to send RSVP. Please try again later.");
+                                                }
+                                              });
+                                            });
+                                            </script>
+
                                         </div>
                                     </div>
                                 </div>
@@ -980,6 +1005,8 @@ document.addEventListener("DOMContentLoaded", () => {
                     </div>
                 </section>
             </section>
+
+
 
             <!-- Wishes section -->
             <section class="wishes-section moveable-section" data-id="6">
@@ -1557,3 +1584,6 @@ function showTemporaryFeedback(el, msg, revertText) {
   }, 1400);
 }
 </script>
+
+
+
