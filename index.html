@@ -861,111 +861,112 @@ document.addEventListener("DOMContentLoaded", () => {
                                             <input type="tel" id="phone" name="phone" class="form-control" placeholder="Phone Number" inputmode="numeric" pattern="[0-9]*"
                                               oninput="this.value = this.value.replace(/[^0-9]/g, '');" required>
                                           </div>
+                                        
+                                                <div class="mb-3">
+                                                    <label for="confirmation" class="form-label" style="color: black">Confirmation of Attendance</label>
+                                              <select id="confirmation" name="confirmation" class="form-select" required>
+                                              <option disabled selected value="">Select event to attend</option>
+                                              <option value="All">Attend all</option>
+                                              <option value="Holy Matrimony">Attend Holy Matrimony only</option>
+                                              <option value="Wedding Reception">Attend Wedding Reception only</option>
+                                              <option value="Afterparty">Attend Afterparty only</option>
+                                              <option value="Unable to attend">Unable to attend</option>
+                                            </select>
 
-                                          <label for="confirmation" class="form-label" style="color: black">Confirmation of Attendance</label>
-<select id="confirmation" name="confirmation" class="form-select" required>
-  <option disabled selected value="">Select event to attend</option>
-  <option value="All">Attend all</option>
-  <option value="Holy Matrimony">Attend Holy Matrimony only</option>
-  <option value="Wedding Reception">Attend Wedding Reception only</option>
-  <option value="Afterparty">Attend Afterparty only</option>
-  <option value="Unable to attend">Unable to attend</option>
-</select>
+                                            <div id="guestsMatrimonyWrapper" class="mb-3" style="display: none;">
+                                              <label for="guestsM" class="form-label" style="color: black">The number of guests for Holy Matrimony</label>
+                                              <select id="guestsM" name="guestsM" class="form-select">
+                                                <option disabled selected value="">Select guests</option>
+                                              </select>
+                                            </div>
 
-<div id="guestsMatrimonyWrapper" class="mb-3" style="display: none;">
-  <label for="guestsM" class="form-label" style="color: black">The number of guests for Holy Matrimony</label>
-  <select id="guestsM" name="guestsM" class="form-select">
-    <option disabled selected value="">Select guests</option>
-  </select>
-</div>
+                                            <div id="guestsReceptionWrapper" class="mb-3" style="display: none;">
+                                              <label for="guests" class="form-label" style="color: black">The number of guests for Reception</label>
+                                              <select id="guests" name="guests" class="form-select">
+                                                <option disabled selected value="">Select guests</option>
+                                              </select>
+                                            </div>
 
-<div id="guestsReceptionWrapper" class="mb-3" style="display: none;">
-  <label for="guests" class="form-label" style="color: black">The number of guests for Reception</label>
-  <select id="guests" name="guests" class="form-select">
-    <option disabled selected value="">Select guests</option>
-  </select>
-</div>
+                                            <div id="guestsAfparWrapper" class="mb-3" style="display: none;">
+                                              <label for="guestsA" class="form-label" style="color: black">The number of guests for Afterparty</label>
+                                              <select id="guestsA" name="guestsA" class="form-select">
+                                                <option disabled selected value="">Select guests</option>
+                                              </select>
+                                            </div>
 
-<div id="guestsAfparWrapper" class="mb-3" style="display: none;">
-  <label for="guestsA" class="form-label" style="color: black">The number of guests for Afterparty</label>
-  <select id="guestsA" name="guestsA" class="form-select">
-    <option disabled selected value="">Select guests</option>
-  </select>
-</div>
+                                            <script>
+                                            document.addEventListener("DOMContentLoaded", function () {
+                                              const confirmationSelect = document.getElementById("confirmation");
+                                              const guestsMatrimonyWrapper = document.getElementById("guestsMatrimonyWrapper");
+                                              const guestsReceptionWrapper = document.getElementById("guestsReceptionWrapper");
+                                              const guestsAfparWrapper = document.getElementById("guestsAfparWrapper");
 
-<script>
-document.addEventListener("DOMContentLoaded", function () {
-  const confirmationSelect = document.getElementById("confirmation");
-  const guestsMatrimonyWrapper = document.getElementById("guestsMatrimonyWrapper");
-  const guestsReceptionWrapper = document.getElementById("guestsReceptionWrapper");
-  const guestsAfparWrapper = document.getElementById("guestsAfparWrapper");
+                                              const guestsM = document.getElementById("guestsM");
+                                              const guests = document.getElementById("guests");
+                                              const guestsA = document.getElementById("guestsA");
 
-  const guestsM = document.getElementById("guestsM");
-  const guests = document.getElementById("guests");
-  const guestsA = document.getElementById("guestsA");
+                                              // Detect type from URL
+                                              let path = window.location.pathname.replace(/^\/+/, "");
+                                              let guestName = path.replace(/-/g, " ").toLowerCase();
 
-  // Detect type from URL
-  let path = window.location.pathname.replace(/^\/+/, "");
-  let guestName = path.replace(/-/g, " ").toLowerCase();
+                                              let maxGuests = 10; // default
 
-  let maxGuests = 10; // default
+                                              if (guestName.includes("and family")) {
+                                                maxGuests = 2;
+                                              } else if (guestName.includes("and partner")) {
+                                                maxGuests = 2;
+                                              }
 
-  if (guestName.includes("and family")) {
-    maxGuests = 2;
-  } else if (guestName.includes("and partner")) {
-    maxGuests = 2;
-  }
+                                              // Helper to build dropdown options dynamically
+                                              function populateOptions(select, max) {
+                                                select.innerHTML = '<option disabled selected value="">Select guests</option>';
+                                                for (let i = 1; i <= max; i++) {
+                                                  const opt = document.createElement("option");
+                                                  opt.value = i;
+                                                  opt.textContent = i;
+                                                  select.appendChild(opt);
+                                                }
+                                              }
 
-  // Helper to build dropdown options dynamically
-  function populateOptions(select, max) {
-    select.innerHTML = '<option disabled selected value="">Select guests</option>';
-    for (let i = 1; i <= max; i++) {
-      const opt = document.createElement("option");
-      opt.value = i;
-      opt.textContent = i;
-      select.appendChild(opt);
-    }
-  }
+                                              // Initially populate all guest dropdowns
+                                              populateOptions(guestsM, maxGuests);
+                                              populateOptions(guests, maxGuests);
+                                              populateOptions(guestsA, maxGuests);
 
-  // Initially populate all guest dropdowns
-  populateOptions(guestsM, maxGuests);
-  populateOptions(guests, maxGuests);
-  populateOptions(guestsA, maxGuests);
+                                              // Toggle visibility based on confirmation
+                                              confirmationSelect.addEventListener("change", function () {
+                                                const value = this.value;
 
-  // Toggle visibility based on confirmation
-  confirmationSelect.addEventListener("change", function () {
-    const value = this.value;
+                                                // Hide everything first
+                                                guestsMatrimonyWrapper.style.display = "none";
+                                                guestsReceptionWrapper.style.display = "none";
+                                                guestsAfparWrapper.style.display = "none";
 
-    // Hide everything first
-    guestsMatrimonyWrapper.style.display = "none";
-    guestsReceptionWrapper.style.display = "none";
-    guestsAfparWrapper.style.display = "none";
+                                                guestsM.required = false;
+                                                guests.required = false;
+                                                guestsA.required = false;
 
-    guestsM.required = false;
-    guests.required = false;
-    guestsA.required = false;
-
-    if (value === "All") {
-      guestsMatrimonyWrapper.style.display = "block";
-      guestsReceptionWrapper.style.display = "block";
-      guestsAfparWrapper.style.display = "block";
-      guestsM.required = true;
-      guests.required = true;
-      guestsA.required = true;
-    } else if (value === "Holy Matrimony") {
-      guestsMatrimonyWrapper.style.display = "block";
-      guestsM.required = true;
-    } else if (value === "Wedding Reception") {
-      guestsReceptionWrapper.style.display = "block";
-      guests.required = true;
-    } else if (value === "Afterparty") {
-      guestsAfparWrapper.style.display = "block";
-      guestsA.required = true;
-    } 
-    // "Unable to attend" → nothing shows
-  });
-});
-</script>
+                                                if (value === "All") {
+                                                  guestsMatrimonyWrapper.style.display = "block";
+                                                  guestsReceptionWrapper.style.display = "block";
+                                                  guestsAfparWrapper.style.display = "block";
+                                                  guestsM.required = true;
+                                                  guests.required = true;
+                                                  guestsA.required = true;
+                                                } else if (value === "Holy Matrimony") {
+                                                  guestsMatrimonyWrapper.style.display = "block";
+                                                  guestsM.required = true;
+                                                } else if (value === "Wedding Reception") {
+                                                  guestsReceptionWrapper.style.display = "block";
+                                                  guests.required = true;
+                                                } else if (value === "Afterparty") {
+                                                  guestsAfparWrapper.style.display = "block";
+                                                  guestsA.required = true;
+                                               } 
+                                                // "Unable to attend" → nothing shows
+                                              });
+                                            });
+                                            </script>
 
                                           </div>
                                           <button class="btn btn-custom w-100" type="submit">Send</button>
@@ -985,14 +986,14 @@ document.addEventListener("DOMContentLoaded", function () {
                         </div>
                     </div>
                     <script>
-  document.addEventListener("DOMContentLoaded", function () {
-    const form = document.getElementById("rsvpForm");
-    form.addEventListener("submit", function (e) {
-      e.preventDefault();  // Stop actual submission
-      form.reset();        // Clear the form fields
-    });
-  });
-</script>
+                      document.addEventListener("DOMContentLoaded", function () {
+                        const form = document.getElementById("rsvpForm");
+                        form.addEventListener("submit", function (e) {
+                          e.preventDefault();  // Stop actual submission
+                          form.reset();        // Clear the form fields
+                        });
+                      });
+                    </script>
                 </section>
             </section>
 
