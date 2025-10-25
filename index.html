@@ -889,6 +889,11 @@ document.addEventListener("DOMContentLoaded", () => {
                                               // Detect type from URL
                                               let path = window.location.pathname.replace(/^\/+/, "");
                                               let guestName = path.replace(/-/g, " ").toLowerCase();
+                                              
+                                              if (!path) {
+                                                  console.log("No guest name in URL, defaulting to generic mode.");
+                                                }
+
 
                                               let maxGuests = 10; // default
 
