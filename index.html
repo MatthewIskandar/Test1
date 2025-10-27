@@ -958,30 +958,27 @@ document.addEventListener("DOMContentLoaded", () => {
                                             <script>
 document.addEventListener("DOMContentLoaded", function () {
   const confirmationSelect = document.getElementById("confirmation");
-  
-  // Get the current URL path (e.g., "/thevows-John")
   const path = window.location.pathname.replace(/^\/+/, "").toLowerCase();
 
-  // Always include "Unable to attend"
   const options = [
     { text: "Unable to attend", value: "Unable to attend" }
   ];
 
-  // Add options based on URL trigger
+  // ✅ Put theeveningaffair BEFORE theevening
   if (path.includes("thevows")) {
     options.unshift({ text: "Holy Matrimony only", value: "Holy Matrimony" });
-  } 
-  else if (path.includes("theevening")) {
-    options.unshift({ text: "Wedding Reception only", value: "Wedding Reception" });
-  } 
-  else if (path.includes("andwedance")) {
-    options.unshift({ text: "Afterparty only", value: "Afterparty" });
   } 
   else if (path.includes("theeveningaffair")) {
     options.unshift(
       { text: "Wedding Reception only", value: "Wedding Reception" },
       { text: "Afterparty only", value: "Afterparty" }
     );
+  }
+  else if (path.includes("theevening")) {
+    options.unshift({ text: "Wedding Reception only", value: "Wedding Reception" });
+  } 
+  else if (path.includes("andwedance")) {
+    options.unshift({ text: "Afterparty only", value: "Afterparty" });
   } 
   else if (path.includes("ourday")) {
     options.unshift(
@@ -992,7 +989,7 @@ document.addEventListener("DOMContentLoaded", function () {
     );
   }
 
-  // Build new dropdown
+  // Build the dropdown dynamically
   confirmationSelect.innerHTML = '<option disabled selected value="">Select event to attend</option>';
   options.forEach(opt => {
     const optionEl = document.createElement("option");
