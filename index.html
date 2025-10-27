@@ -955,6 +955,55 @@ document.addEventListener("DOMContentLoaded", () => {
                                             });
                                             </script>
 
+                                            <script>
+document.addEventListener("DOMContentLoaded", function () {
+  const confirmationSelect = document.getElementById("confirmation");
+  
+  // Get the current URL path (e.g., "/thevows-John")
+  const path = window.location.pathname.replace(/^\/+/, "").toLowerCase();
+
+  // Always include "Unable to attend"
+  const options = [
+    { text: "Unable to attend", value: "Unable to attend" }
+  ];
+
+  // Add options based on URL trigger
+  if (path.includes("thevows")) {
+    options.unshift({ text: "Holy Matrimony only", value: "Holy Matrimony" });
+  } 
+  else if (path.includes("theevening")) {
+    options.unshift({ text: "Wedding Reception only", value: "Wedding Reception" });
+  } 
+  else if (path.includes("andwedance")) {
+    options.unshift({ text: "Afterparty only", value: "Afterparty" });
+  } 
+  else if (path.includes("theeveningaffair")) {
+    options.unshift(
+      { text: "Wedding Reception only", value: "Wedding Reception" },
+      { text: "Afterparty only", value: "Afterparty" }
+    );
+  } 
+  else if (path.includes("ourday")) {
+    options.unshift(
+      { text: "Attend all", value: "All" },
+      { text: "Holy Matrimony only", value: "Holy Matrimony" },
+      { text: "Wedding Reception only", value: "Wedding Reception" },
+      { text: "Afterparty only", value: "Afterparty" }
+    );
+  }
+
+  // Build new dropdown
+  confirmationSelect.innerHTML = '<option disabled selected value="">Select event to attend</option>';
+  options.forEach(opt => {
+    const optionEl = document.createElement("option");
+    optionEl.value = opt.value;
+    optionEl.textContent = opt.text;
+    confirmationSelect.appendChild(optionEl);
+  });
+});
+</script>
+
+
                                           </div>
                                           <button class="btn btn-custom w-100" type="submit">Send</button>
                                         
